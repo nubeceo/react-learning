@@ -1,10 +1,16 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect, useRef } from 'react'
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [length, setLength] = useState(8);
   const [number, setNumber] = useState(false);
   const [charecter, setCharecter] = useState(false);
   const [password, setPassword] = useState("")
+
+  //useRef hook
+
+  const passwordRef = useRef(null);
 
   const passwordGenerator = useCallback(() => {
     let pass = "";
@@ -13,15 +19,27 @@ function App() {
     if (number) str += "0123456789";
     if (charecter) str += "!@#$%^&*(){}[]?";
 
-    for (let i = 1; i < array.length; i++) {
+    for (let i = 1; i <= length; i++) {
       let char = Math.floor(Math.random() * str.length + 1)
-      pass = str.charAt(char);
+      pass += str.charAt(char);
     }
 
     setPassword(pass);
 
 
   }, [length, number, charecter, setPassword]);
+
+  const copyPasswordToClipBoard = useCallback(() => {
+    passwordRef.current?.select();
+    window.navigator.clipboard.writeText(password).then(() => {
+      toast.success("Password copied to clipboard");
+    });
+
+  }, [password])
+
+  useEffect(() => {
+    passwordGenerator()
+  }, [length, number, charecter, passwordGenerator])
 
   return (
     <>
@@ -36,10 +54,14 @@ function App() {
             className="outline-none w-full py-1 px-3 m-6 rounded-tl-lg rounded-bl-lg h-10 text-xl  font-mono mr-0"
             placeholder='password'
             readOnly
+            ref={passwordRef}
           />
 
-          <button className='px-3 py-0.5 outline-none bg-blue-700 text-white shrink-0 cursor-pointer m-6 ml-0 rounded-tr-xl rounded-br-xl'>Copy</button>
+          <button
 
+            onClick={copyPasswordToClipBoard}
+            className='px-3 py-0.5 outline-none bg-blue-700 text-white shrink-0 cursor-pointer m-6 ml-0 rounded-tr-xl rounded-br-xl font-mono text-lg'>Copy</button>
+          <ToastContainer />
         </div>
 
         <div className='flex text-s gap-x-2 m-3 items-center justify-center'>
@@ -80,7 +102,7 @@ function App() {
 
 
           <div className='flex items-center gap-x-1 shadow-lg p-1.5' >
-          <input
+            <input
               type="checkbox"
               defaultChecked={charecter}
               id='charecterInput'
