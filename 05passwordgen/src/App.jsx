@@ -1,14 +1,104 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useCallback } from 'react'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [length, setLength] = useState(8);
+  const [number, setNumber] = useState(false);
+  const [charecter, setCharecter] = useState(false);
+  const [password, setPassword] = useState("")
+
+  const passwordGenerator = useCallback(() => {
+    let pass = "";
+    let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+
+    if (number) str += "0123456789";
+    if (charecter) str += "!@#$%^&*(){}[]?";
+
+    for (let i = 1; i < array.length; i++) {
+      let char = Math.floor(Math.random() * str.length + 1)
+      pass = str.charAt(char);
+    }
+
+    setPassword(pass);
+
+
+  }, [length, number, charecter, setPassword]);
 
   return (
     <>
-      
+      <div className="w-full max-w-xl mx-auto shadow-md rounded-lg px-4 my-8 text-orange-500 bg-gray-800 mt-20 flex flex-col justify-center ">
+
+        <h1 className='text-center text-white pt-5 font-mono text-xl'>Password Generator</h1>
+
+        <div className="flex shadow-lg rounded-lg overflow-hidden mb-4">
+
+          <input type="text"
+            value={password}
+            className="outline-none w-full py-1 px-3 m-6 rounded-tl-lg rounded-bl-lg h-10 text-xl  font-mono mr-0"
+            placeholder='password'
+            readOnly
+          />
+
+          <button className='px-3 py-0.5 outline-none bg-blue-700 text-white shrink-0 cursor-pointer m-6 ml-0 rounded-tr-xl rounded-br-xl'>Copy</button>
+
+        </div>
+
+        <div className='flex text-s gap-x-2 m-3 items-center justify-center'>
+
+          <div className='flex items-center gap-x-8 shadow-lg p-1.5'>
+            <input
+              type="range"
+              min={8}
+              max={50}
+              value={length}
+              className='cursor-pointer'
+              onChange={(e) => { setLength(e.target.value) }}
+            />
+            <label>Length: {length}</label>
+          </div>
+
+
+
+
+          <div className='flex items-center gap-x-1 shadow-lg p-1.5'>
+
+            <input
+              type="checkbox"
+              defaultChecked={number}
+              id='numberInput'
+              onChange={() => {
+                setNumber((prev) => !prev);
+              }}
+
+              className='cursor-pointer'
+
+            />
+            <label>Number</label>
+          </div>
+
+
+
+
+
+          <div className='flex items-center gap-x-1 shadow-lg p-1.5' >
+          <input
+              type="checkbox"
+              defaultChecked={charecter}
+              id='charecterInput'
+              onChange={() => {
+                setCharecter((prev) => !prev);
+              }}
+
+              className='cursor-pointer'
+
+            />
+            <label>Charecter</label>
+          </div>
+
+        </div>
+      </div>
+
+
+
     </>
   )
 }
