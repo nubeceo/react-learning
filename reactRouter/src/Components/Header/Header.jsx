@@ -86,6 +86,21 @@ function Header() {
                 </NavLink>
               </li>
 
+              <li>
+                <NavLink
+                  to="/user"
+                  className={({isActive}) =>
+                    `block py-2 pr-4 pl-3 duration-200 border-b border-gray-100 
+                    ${isActive ? "text-orange-700" :" text-gray-700"}
+                    lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
+                  }
+                >
+                  User
+                </NavLink>
+              </li>
+
+
+
 
             </ul>
           </div>
