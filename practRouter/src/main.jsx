@@ -20,10 +20,13 @@ const router = createBrowserRouter(
 )
 
 
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-
+    {/* this is where the router along with the page component is beign returned */}
   <RouterProvider router={router}/>
 
   </React.StrictMode>,
 )
+
+
