@@ -12,6 +12,7 @@ function Github() {
   }, [])
 
 
+  
   return (
     <div className='text-center text-3xl bg-slate-900 text-white font-mono p-3 flex flex-wrap justify-evenly'>
       <div className='w-52'>
