@@ -13,7 +13,7 @@ function App() {
       <div className='w=full flex flex-col justify-center items-center'>
 
 
-        <h1 className='text-white text-5xl'>react</h1>
+        <h1 className='text-white text-5xl'>react aur chai</h1>
      
         <Profile />
         <Login />
