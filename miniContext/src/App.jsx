@@ -11,10 +11,16 @@ function App() {
   return (
     
     <UserContextProvider>
-      <div className=' h-full flex flex-col justify-center items-center '>
-      <Profile/>
-      <br />
-      <Login/>
+      <div className='w=full flex flex-col justify-center items-center'>
+
+
+        <h1 className='text-white text-5xl'>react</h1>
+     
+        <Profile />
+        <Login />
+        
+
+
       </div>
     </UserContextProvider>
     
