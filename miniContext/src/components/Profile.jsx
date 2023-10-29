@@ -3,14 +3,16 @@ import UserContext from '../context/UserContext'
 
 
 
+
 function Profile() {
 
-    const { user } = useContext(UserContext)
+    const{user} = useContext(UserContext)
 
-    if (!user) return <div className='text-white text-3xl font-mono'>Please Login</div>
+    if(!user) return <h1 className='text-white text-2xl'>Please Login</h1>
+    return(
+        <div className='text-3xl text-yellow-400'> Welcome {user.username}</div>
+    )
 
-    
-    return <div className='text-white text-3xl font-mono'>Welcome {user.username}</div>
 }
 
 export default Profile

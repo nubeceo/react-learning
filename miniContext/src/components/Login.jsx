@@ -9,17 +9,28 @@ function Login() {
 
     const handelSubmit = (e) => {
         e.preventDefault()
+
         setUser({ username, password })
     }
 
-    return (
-        <div className='flex flex-col items-center'>
-            <h2 className='text-white text-lg  '>Login</h2>
-            <input className='m-3' onChange={(e) => setUsername(e.target.value)} value={username} type="text" placeholder='username' />
 
-            <input onChange={(e) => setPassword(e.target.value)} value={password} type="text" placeholder='password' />
-            
-            <button className='bg-slate-600 m-2 text-2xl text-white rounded-md' onClick={handelSubmit}>Submit</button>
+    return (
+        <div className='flex  flex-col items-center'>
+            <h2 className='text-white text-lg  '>Login</h2>
+
+            <input type="text" onChange={(e) => setUsername(e.target.value)} value={username} placeholder='username' />
+
+            <br />
+            <input type='password' onChange={(e) => setPassword(e.target.value)}
+                value={password}
+                placeholder='password'
+            />
+
+            <br />
+
+            <button className='  rounded p-2 text-yellow-400 bg-slate-600' onClick={handelSubmit}>Submit</button>
+
+
 
         </div>
     )

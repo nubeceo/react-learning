@@ -9,19 +9,15 @@ import Login from './components/Login'
 function App() {
 
   return (
+    
     <UserContextProvider>
-      <div className='w=full flex flex-col justify-center items-center'>
-
-
-        <h1 className='text-white text-5xl'>react</h1>
-     
-        <Profile />
-        <Login />
-        
-
-
+      <div className=' h-full flex flex-col justify-center items-center '>
+      <Profile/>
+      <br />
+      <Login/>
       </div>
     </UserContextProvider>
+    
   )
 }
 
