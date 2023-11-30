@@ -9,7 +9,7 @@ function App() {
   const increase = () => {
     setCount(count + 1);
   }
-
+// this is the decerese function
   const decrease = () => {
     if(count>=1){
       setCount(count - 1);
