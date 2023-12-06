@@ -1,6 +1,6 @@
 function Chai(){
     return(
-        <h2>chai is rea</h2>
+        <h2>chai is ea</h2>
     )
 }
 
